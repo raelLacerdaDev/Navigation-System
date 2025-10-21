@@ -1,6 +1,6 @@
 fun main() {
     println("first input:")
-    testeNavigation(
+    testNavigation(
         browser = Browser(),
         commands = arrayOf(
             "get-current",
@@ -16,7 +16,7 @@ fun main() {
     )
     println()
     println("second input:")
-    testeNavigation(
+    testNavigation(
         browser = Browser(),
         commands = arrayOf(
             "access,https://amazon.com",
@@ -27,7 +27,7 @@ fun main() {
     )
     println()
     println("third input:")
-    testeNavigation(
+    testNavigation(
         browser = Browser(),
         commands = arrayOf(
             "access,https://amazon.com",
@@ -46,7 +46,7 @@ fun main() {
     )
     println()
     println("fourth input:")
-    testeNavigation(
+    testNavigation(
         browser = Browser(),
         commands = arrayOf(
             "access,https://amazon.com",
@@ -71,7 +71,7 @@ fun main() {
 
 }
 
-fun testeNavigation (browser: Browser, commands: Array<String>) {
+fun testNavigation (browser: Browser, commands: Array<String>) {
     commands.forEach { command ->
         when {
             command == "get-current" -> {
