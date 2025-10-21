@@ -1,84 +1,85 @@
 // Aviso : esse código é uma conversão feito por IA do meu código em kotlin se possivel avaliar os arquivos .kt, desde ja agradeço. 
 
+
 public class Main {
 
     // --- MAIN ---
     // Ponto de entrada do programa, contendo os casos de teste
     public static void main(String[] args) {
         System.out.println("first input:");
-        testeNavigation(
-            new Browser(),
-            new String[] {
-                "get-current",
-                "access,https://amazon.com",
-                "access,https://cnn.com",
-                "get-current",
-                "back",
-                "get-current",
-                "back",
-                "get-current",
-                "back"
-            }
+        testNavigation(
+                new Browser(),
+                new String[] {
+                        "get-current",
+                        "access,https://amazon.com",
+                        "access,https://cnn.com",
+                        "get-current",
+                        "back",
+                        "get-current",
+                        "back",
+                        "get-current",
+                        "back"
+                }
         );
         System.out.println();
         System.out.println("second input:");
-        testeNavigation(
-            new Browser(),
-            new String[] {
-                "access,https://amazon.com",
-                "access,https://cnn.com",
-                "get-current",
-                "forward"
-            }
+        testNavigation(
+                new Browser(),
+                new String[] {
+                        "access,https://amazon.com",
+                        "access,https://cnn.com",
+                        "get-current",
+                        "forward"
+                }
         );
         System.out.println();
         System.out.println("third input:");
-        testeNavigation(
-            new Browser(),
-            new String[] {
-                "access,https://amazon.com",
-                "access,https://cnn.com",
-                "access,https://gmail.com",
-                "access,https://outlook.com",
-                "get-current",
-                "back",
-                "back",
-                "back",
-                "get-current",
-                "forward",
-                "forward",
-                "get-current"
-            }
+        testNavigation(
+                new Browser(),
+                new String[] {
+                        "access,https://amazon.com",
+                        "access,https://cnn.com",
+                        "access,https://gmail.com",
+                        "access,https://outlook.com",
+                        "get-current",
+                        "back",
+                        "back",
+                        "back",
+                        "get-current",
+                        "forward",
+                        "forward",
+                        "get-current"
+                }
         );
         System.out.println();
         System.out.println("fourth input:");
-        testeNavigation(
-            new Browser(),
-            new String[] {
-                "access,https://amazon.com",
-                "access,https://cnn.com",
-                "access,https://gmail.com",
-                "access,https://outlook.com",
-                "get-current",
-                "back",
-                "back",
-                "back",
-                "get-current",
-                "forward",
-                "forward",
-                "get-current",
-                "access,https://devsuperior.com.br",
-                "back",
-                "forward",
-                "get-current",
-                "forward"
-            }
+        testNavigation(
+                new Browser(),
+                new String[] {
+                        "access,https://amazon.com",
+                        "access,https://cnn.com",
+                        "access,https://gmail.com",
+                        "access,https://outlook.com",
+                        "get-current",
+                        "back",
+                        "back",
+                        "back",
+                        "get-current",
+                        "forward",
+                        "forward",
+                        "get-current",
+                        "access,https://devsuperior.com.br",
+                        "back",
+                        "forward",
+                        "get-current",
+                        "forward"
+                }
         );
     }
 
     // --- TESTE NAVIGATION ---
     // Função estática que executa os comandos de teste
-    public static void testeNavigation(Browser browser, String[] commands) {
+    public static void testNavigation(Browser browser, String[] commands) {
         // Itera sobre cada comando usando um loop for-each
         for (String command : commands) {
             // Usa if-else if para simular o 'when' do Kotlin
@@ -148,7 +149,7 @@ class NavigationStack {
     // (pop)
     public Page back() {
         if (this.size == 0) return null; // ou (this.head == null)
-        
+
         Page pageToReturn = this.head;
         this.head = this.head.nextPage; // Não precisamos do 'safe call' (?.), pois sabemos que 'head' não é nulo
         pageToReturn.nextPage = null; // Limpa a referência
@@ -187,7 +188,7 @@ class Browser {
         }
         this.forwardStack.access(this.currentPage);
         Page current = this.backStack.back();
-        
+
         // Simulação do operador Elvis (current?.url ?: "home")
         this.currentPage = (current != null) ? current.url : "home";
     }
@@ -198,7 +199,7 @@ class Browser {
         }
         this.backStack.access(this.currentPage);
         Page current = this.forwardStack.back();
-        
+
         // Simulação do operador Elvis
         this.currentPage = (current != null) ? current.url : "home";
     }
